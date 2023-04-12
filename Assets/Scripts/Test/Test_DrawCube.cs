@@ -47,6 +47,7 @@ public class Test_DrawCube : MonoBehaviour
         drawDic.Clear();
     }
 
+    //触发盒范围绘制
     private void OnDrawGizmos()
     {
         if (!IsShow)

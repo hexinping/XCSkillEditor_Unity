@@ -13,7 +13,7 @@ namespace FluxEditor
 
         Dictionary<CubeRange, Transform> cubeDic = new Dictionary<CubeRange, Transform>();
 
-        //Scene»æÖÆ
+        //Sceneï¿½ï¿½ï¿½ï¿½
         Test_DrawCube drawCube;
 
         public override void Init(FObject obj, FEditor owner)
