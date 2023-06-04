@@ -58,3 +58,21 @@ Track则对应类型EventList（如AnimEvents），
 
 Event则是最小的事件单位。 
 ]==]
+
+--[==[
+
+Flux常用脚本调用流程和方法
+{
+	Flux的默认脚本可以自己扩展，需要什么字段可以自己加
+
+	FSequence:Init ==> FContainer:Init==>FTimeline:Init ==> FTrack:Init==> FEvent:Init ()//可以重载Fevent类型的OnInit方法完成自己的初始化
+
+	FEvent:Trigger==> FEvent开始时调用一次，每个新的FEvent都会调用 ==> Trigger方法里会调用OnTrigger, 子类可以重载
+	FEvent:Finish==> FEvent结束时调用一次，每个新的FEvent都会调用 ==> Finish方法里会调用OnFinish, 子类可以重载
+
+	暂停，恢复，停止==》 分别调用FEvent的Pause,Resume,Stop ==> 分别重载OnPause，OnResume, OnStop
+
+	有每一帧都调用的方法吗==>FEvent运行时，UpateEvent每一帧都会调用，子类可以重载OnUpdateEvent方法
+}
+
+]==]
