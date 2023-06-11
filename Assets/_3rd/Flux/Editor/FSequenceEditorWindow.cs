@@ -117,6 +117,7 @@ namespace FluxEditor
 
             minSize = new Vector2(450, 300);
 
+            //Flux编辑窗口头部信息
             _windowHeader = new FSequenceWindowHeader(this);
 
             _toolbar = new FSequenceWindowToolbar(this);
@@ -169,6 +170,7 @@ namespace FluxEditor
 
         public bool IsPlaying { get { return _sequenceEditor.IsPlaying; } }
 
+        //窗口的update方法，Unity内部自己调用
         void Update()
         {
             if (Application.isPlaying)

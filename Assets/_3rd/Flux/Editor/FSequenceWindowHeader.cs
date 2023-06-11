@@ -258,6 +258,7 @@ namespace FluxEditor
 
         }
 
+        //外部调用 FSequenceEditorWindow.OnGUI
         public void OnGUI()
         {
             FSequence sequence = _sequenceWindow.GetSequenceEditor().Sequence;
@@ -280,7 +281,7 @@ namespace FluxEditor
                 Selection.activeObject = sequence;
                 Event.current.Use();
             }
-
+            //绘制Sequence
             EditorGUI.BeginChangeCheck();
             EditorGUI.PrefixLabel(_sequenceLabelRect, _sequenceLabel);
             int newSequenceIndex = EditorGUI.Popup(_sequencePopupRect, _selectedSequenceIndex, _sequenceNames);
@@ -288,6 +289,7 @@ namespace FluxEditor
             {
                 if (newSequenceIndex == _sequenceNames.Length - 1)
                 {
+                    //新建sequence
                     FSequence newSequence = FSequenceEditorWindow.CreateSequence();
                     Selection.activeTransform = newSequence.transform;
                     _sequenceWindow.GetSequenceEditor().OpenSequence(newSequence);
@@ -322,19 +324,20 @@ namespace FluxEditor
             {
                 _sequenceSO = new SerializedObject(sequence);
             }
+            //这几个属性哪里来的？？？==》 FSequence里的属性，所以要添加属性可以在FSequence脚本加
             _sequenceUpdateMode = _sequenceSO.FindProperty("_updateMode");
             _sequenceLength = _sequenceSO.FindProperty("_length");
-            _sequenceSkillId = _sequenceSO.FindProperty("_skillId");
-            _sequenceSetting = _sequenceSO.FindProperty("_fSeqSetting");
+            _sequenceSkillId = _sequenceSO.FindProperty("_skillId");  //自定义添加
+            _sequenceSetting = _sequenceSO.FindProperty("_fSeqSetting"); //自定义添加
 
             //_sequenceSO.Update();
-
+            //绘制UpdateMode
             if (_showUpdadeMode)
             {
                 EditorGUI.PrefixLabel(_updateModeLabelRect, _updateModeLabel);
                 EditorGUI.PropertyField(_updateModeFieldRect, _sequenceUpdateMode, GUIContent.none);
             }
-
+            //绘制Framerate
             if (_showFramerate)
             {
                 EditorGUI.PrefixLabel(_framerateLabelRect, _framerateLabel);
@@ -358,6 +361,8 @@ namespace FluxEditor
                 EditorGUI.PrefixLabel(_lengthLabelRect, _lengthLabel);
                 _sequenceLength.intValue = Mathf.Clamp(EditorGUI.IntField(_lengthFieldRect, _sequenceLength.intValue, _numberFieldStyle), 1, int.MaxValue);
             }
+            
+            //绘制技能ID
             EditorGUI.PrefixLabel(_skillIdLabelRect, _skillIdLabel);
             _sequenceSkillId.stringValue = EditorGUI.TextField(_skillIdFieldRect, _sequenceSkillId.stringValue);
 
@@ -373,11 +378,13 @@ namespace FluxEditor
                 }
             }
 
+            //保存按钮
             if (FGUI.Button(__savaDataRect, _savaDataLabel))
             {
+                //技能数据保存。需要将Flux中的序列事件信息保存起来，给技能执行器用
                 SavaSequenceData.GetData();
             }
-
+            //Inspector面板按钮
             if (FGUI.Button(_openInspectorRect, _openInspectorLabel))
             {
                 FInspectorWindow.Open();
