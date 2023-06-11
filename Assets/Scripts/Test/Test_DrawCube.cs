@@ -8,6 +8,8 @@ public class Test_DrawCube : MonoBehaviour
 {
     public bool IsShow = true;
     public Color drawColor;
+    //key：Track
+    //value: Dictionary<CubeRange,owner>
     public Dictionary<FTrack, Dictionary<CubeRange, Transform>> drawDic = new Dictionary<FTrack, Dictionary<CubeRange, Transform>>(); 
 
     public void Regist(FTrack track)

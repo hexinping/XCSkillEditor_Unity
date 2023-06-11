@@ -13,7 +13,7 @@ namespace FluxEditor
 
         Dictionary<CubeRange, Transform> cubeDic = new Dictionary<CubeRange, Transform>();
 
-        //Scene����
+        //Scene视图下绘制碰撞盒区域
         Test_DrawCube drawCube;
 
         public override void Init(FObject obj, FEditor owner)
@@ -56,7 +56,7 @@ namespace FluxEditor
                 var ev = (FTriggerRangeEvent)item;
                 if (item.FrameRange.Contains(frame))
                 {
-
+                    //在帧范围内绘制
                     drawCube.Add(Track ,ev.cubeRange, ev.Owner);
                 }
                 else

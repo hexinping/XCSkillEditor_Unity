@@ -17,7 +17,7 @@ TODO
 	1 熟悉FLux制作方式
 	{
 		1 默认支持方式
-		2 自定义方式，可以直接看项目里扩展方式
+		2 自定义方式，可以直接看项目里扩展方式  
 	}
 
 
@@ -75,4 +75,56 @@ Flux常用脚本调用流程和方法
 	有每一帧都调用的方法吗==>FEvent运行时，UpateEvent每一帧都会调用，子类可以重载OnUpdateEvent方法
 }
 
+]==]
+
+--[==[
+
+自定义track 参考 ==> FTriggerRangeTrack   FTriggerRangeTrackEditor重写了面板
+{
+	Test_DrawCube  ==》 用来scene窗口下绘制碰撞盒的
+	FTriggerRangeEvent ==> 添加event属性
+}
+
+
+FSwitchEvent
+
+
+自定义Track步骤
+{
+	1 Assets/Flux/Runtime/Tracks/下添加一个Track的脚本，在命名空间Flux下，并且继承FTrack
+	{
+		namespace Flux
+		{
+		    public class FTriggerRangeTrack:FTrack
+		    {
+		        
+		    }
+		}
+	}
+
+	2 编写对应的Event脚本 Assets/Flux/Runtime/Events
+	{
+		namespace Flux
+		{
+					//碰撞器范围Track
+		    [FEvent("Custom/碰撞器范围Track", typeof(FTriggerRangeTrack))]
+		    public class FTriggerRangeEvent: FEvent
+		    {
+		        public CubeRange cubeRange;
+		        public string ackId = "0";
+		    }
+		}
+
+	}
+
+	3 编写对应的编辑器脚本，如果有需求可以需要  Assets/Flux/Editor/Editors， 重写对应的方法
+	{
+		[FEditor(typeof(FTriggerRangeTrack))]
+	    public class FTriggerRangeTrackEditor : FTrackEditor
+	    {}
+	}
+
+	4 修改Event的颜色，在Assets/Flux/Editor/FluxSettings.asset文件里配置
+	
+}
 ]==]
