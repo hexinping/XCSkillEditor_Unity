@@ -216,6 +216,7 @@ namespace FluxEditor
             int objIndex = 0;
             Transform playerTF = Sequence.Containers[0].Timelines[0]._owner;
 
+            //序列化技能事件数据类型
             List<SkillEventData> skillEvents = new List<SkillEventData>();
             foreach (var _timeline in Sequence.Containers[0].Timelines)
             {
