@@ -88,7 +88,9 @@ Flux常用脚本调用流程和方法
 }
 
 
-FSwitchEvent
+FSwitchEvent ==>SwitchEvents 用于控制技能后摇, 和结束帧 
+
+XCMsgEvent==》用于发送消息，如重力开关
 
 
 自定义Track步骤

@@ -288,7 +288,7 @@ namespace FluxEditor
         //playerTF 作为参考坐标
         private static SkillEventData ReadTrack(SkillEventData res, FTrack _track, Transform playerTF)
         {
-            Debug.Log("yns  " + _track.GetEventType());
+            Debug.Log("yns  [Event]" + _track.GetEventType());
             var trackType = _track.GetEventType();
             if (trackType == typeof(FPlayAnimationEvent))
             {

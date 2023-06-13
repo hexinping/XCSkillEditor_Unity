@@ -30,7 +30,7 @@ public class SkillEventData : MonoBehaviour
     [ShowIf(nameof(ShowScale), "no")]
     public XCEventOwnerData<XCScaleEvent> ScaleEvents = new XCEventOwnerData<XCScaleEvent>();
 
-    //SwitchEvents 用于控制技能后摇, 和结束帧
+    //SwitchEvents 用于控制技能后摇, 和结束帧  ?? TODO
     [ShowIf(nameof(ShowSwitchEvents), "no")]
     public XCEventOwnerData<XCSwitchEvent> SwitchEvents = new XCEventOwnerData<XCSwitchEvent>();
 
