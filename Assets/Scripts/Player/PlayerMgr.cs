@@ -27,14 +27,14 @@ namespace XiaoCao
 
         #endregion
 
-        #region Î¯ÍĞ
+        #region å§”æ‰˜
         public delegate void PlayerEvent(uint netId);
 
 
-        private PlayerEvent OnLoginEvent; //µÇÂ¼
-        private PlayerEvent OnStopEvent; //µÇ³ö
-        private PlayerEvent OnChangeEvent; //µÇÂ¼»òÕßµÇ³ö
-        private PlayerEvent OnValueChangeEvent; //ÊıÖµ¸Ä±äÊ± »òµÇÂ¼»òÕßµÇ³ö
+        private PlayerEvent OnLoginEvent; //ç™»å½•
+        private PlayerEvent OnStopEvent; //ç™»å‡º
+        private PlayerEvent OnChangeEvent; //ç™»å½•æˆ–è€…ç™»å‡º
+        private PlayerEvent OnValueChangeEvent; //æ•°å€¼æ”¹å˜æ—¶ æˆ–ç™»å½•æˆ–è€…ç™»å‡º
 
 
         public void AddListener(ClientEventType eventType, PlayerEvent player)
@@ -66,7 +66,7 @@ namespace XiaoCao
         {
             if (isPlayerStarted)
             {
-                //Èç¹ûÒÑ¾­¿ªÊ¼¾ÍÖ±½Óµ÷ÓÃ
+                //å¦‚æœå·²ç»å¼€å§‹å°±ç›´æ¥è°ƒç”¨
                 addAciton.Invoke();
             }
             else
@@ -214,11 +214,11 @@ namespace XiaoCao
             Debug.Log($"yns  Add Player");
             NetworkServer.Spawn(player);
 
-            //Õâ±ßµÄĞŞ¸Ä¶¼ÊÇ±¾µØµÄĞŞ¸Ä ¶Ô·şÎñÆ÷²»Æğ×÷ÓÃ , ³öÉúÊı¾İÖ»ÈÏÔ¤ÖÆÌå
+            //è¿™è¾¹çš„ä¿®æ”¹éƒ½æ˜¯æœ¬åœ°çš„ä¿®æ”¹ å¯¹æœåŠ¡å™¨ä¸èµ·ä½œç”¨ , å‡ºç”Ÿæ•°æ®åªè®¤é¢„åˆ¶ä½“
             PlayerState state = player.GetComponent<PlayerState>();
             state.transform.position = startPos;
 
-            //¶ÔÓÚSyncVar µÄÊı¾İ, »áhook¹ıÈ¥
+            //å¯¹äºSyncVar çš„æ•°æ®, ä¼šhookè¿‡å»
             state.isTruePlayer = false;
             state.AgentTag = agentTag; 
 

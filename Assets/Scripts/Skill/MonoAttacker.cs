@@ -15,27 +15,27 @@ namespace XiaoCao
         #region NetWork
         public bool IsLocal => hasAuthority;
 
-        //±¾µØÍæ¼Ò ²»°üÀ¨npc
+        //æœ¬åœ°ç©å®¶ ä¸åŒ…æ‹¬npc
         public bool IsLocalTruePlayer => isTruePlayer && IsLocal;
 
         public bool IsLocalNpc => !isTruePlayer && IsLocal;
 
-        //isLocalPlayer ±¾µØÍæ¼Ò°üÀ¨±¾µØNpc
+        //isLocalPlayer æœ¬åœ°ç©å®¶åŒ…æ‹¬æœ¬åœ°Npc
 
         [Header("MainSetting")]
 
-        //Ä£ĞÍ
+        //æ¨¡å‹
         public AgentModelType agentType;
 
         public bool isEnableAck = false;
         [SyncVar()]
-        public bool isTruePlayer = false; //ÊÇ¿Í»§¶Ë¿ØÖÆµÄ½ÇÉ«
+        public bool isTruePlayer = false; //æ˜¯å®¢æˆ·ç«¯æ§åˆ¶çš„è§’è‰²
 
 
         #endregion
         public Animator animator;
         [SerializeField]
-        [Header("ÑªÌõÎ»ÖÃ")]
+        [Header("è¡€æ¡ä½ç½®")]
         private Transform _topTranform;
         public Transform TopTranform
         {
@@ -83,7 +83,7 @@ namespace XiaoCao
 
         public Action<XCEventsRunner> onSkillFinish;
         public Action<AckInfo> OnDamAciton;
-        #region ÉúÃüÖÜÆÚ
+        #region ç”Ÿå‘½å‘¨æœŸ
         public override void OnStartAuthority()
         {
             base.OnStartAuthority();
@@ -107,7 +107,7 @@ namespace XiaoCao
         #endregion
         public void UpdateHpBar()
         {
-            //TODo ÍµÀÁÁË
+            //TODo å·æ‡’äº†
         }
 
         public virtual void UpdatePlayData(PlayerData old, PlayerData newData)
@@ -143,10 +143,10 @@ namespace XiaoCao
             ///=> <see cref="PlayerState.SetSlowRoteAnim"/>
         }
 
-        //²éÕÒ
-        //seeR£ºÊÓ¾õ·¶Î§
-        //angle:ÊÓ¾õ¼Ğ½Ç 0-180 £¬´óÓÚ90±íÊ¾´¦ÓÚºó·½
-        //hearR:Ìı¾õ·¶Î§; ¸ºÊı->Ã»ÓĞÌı¾õ·¶Î§,0->¸ù¾İangle×Ô¶¯¼ÆËãÌı¾õ·¶Î§¡£²¢ÇÒ¹æ¶¨seeR>hearR
+        //æŸ¥æ‰¾
+        //seeRï¼šè§†è§‰èŒƒå›´
+        //angle:è§†è§‰å¤¹è§’ 0-180 ï¼Œå¤§äº90è¡¨ç¤ºå¤„äºåæ–¹
+        //hearR:å¬è§‰èŒƒå›´; è´Ÿæ•°->æ²¡æœ‰å¬è§‰èŒƒå›´,0->æ ¹æ®angleè‡ªåŠ¨è®¡ç®—å¬è§‰èŒƒå›´ã€‚å¹¶ä¸”è§„å®šseeR>hearR
         public MonoAttacker SearchEnemy(float seeR = 15, float seeAngle = 180, float hearR = 0)
         {
             MonoAttacker res = null;
@@ -171,17 +171,17 @@ namespace XiaoCao
                         {
                             hearR = seeAngle / 180 * seeR;
                         }
-                        //Ìı¾õ²éÕÒ
+                        //å¬è§‰æŸ¥æ‰¾
                         isFinded = curDis < hearR;
                     }
 
                     if (isFinded)
                     {
-                        //curAngle ½Ó½ü 0 , Ëã³öÀ´µÄ¾àÀëÔ½Ğ¡
+                        //curAngle æ¥è¿‘ 0 , ç®—å‡ºæ¥çš„è·ç¦»è¶Šå°
                         float reAngleRete = Mathf.Lerp(1, 1.5f, curAngle / 180);
 
-                        tmpdis = curDis* reAngleRete;//¼ÆËã¾àÀë*¼Ğ½ÇÈ¨ÖØ
-                        //±È½Ï Ñ¡³ö×î½üµÄµ¥Î»
+                        tmpdis = curDis* reAngleRete;//è®¡ç®—è·ç¦»*å¤¹è§’æƒé‡
+                        //æ¯”è¾ƒ é€‰å‡ºæœ€è¿‘çš„å•ä½
                         if (tmpdis > 0 && tmpdis < minDis)
                         {
                             minDis = tmpdis;
@@ -195,8 +195,8 @@ namespace XiaoCao
 
 
         /// <param name="tf"></param>
-        /// <param name="minAngle">ÕıÇ°·½ÏòÓëµĞÈË·½ÏòµÄ¼Ğ½Ç0-180,´óÓÚ90¶ÈÔò±íÊ¾ÔÚÉíºó</param>
-        /// <param name="curAngle">Êä³öµ±Ç°¼Ğ½Ç</param>
+        /// <param name="minAngle">æ­£å‰æ–¹å‘ä¸æ•Œäººæ–¹å‘çš„å¤¹è§’0-180,å¤§äº90åº¦åˆ™è¡¨ç¤ºåœ¨èº«å</param>
+        /// <param name="curAngle">è¾“å‡ºå½“å‰å¤¹è§’</param>
         /// <returns></returns>
         public bool IsInRangeAngle(Transform tf, float minAngle, out float curAngle)
         {
@@ -246,7 +246,7 @@ namespace XiaoCao
         public float cdRate = 1;
         public Action action;
         public bool isRuning = true;
-        public bool isLoop = false;//Ê±¼äµ½×Ô¶¯½áÊø¼ÆÊ± ²»Ñ­»·, Ñ­»·ĞèÒªResetTimer()
+        public bool isLoop = false;//æ—¶é—´åˆ°è‡ªåŠ¨ç»“æŸè®¡æ—¶ ä¸å¾ªç¯, å¾ªç¯éœ€è¦ResetTimer()
 
         public float FillAmount
         {
@@ -308,7 +308,7 @@ namespace XiaoCao
             }
             else
             {
-                //Èç¹û ×·¼ÓÊ±¼ä ´óÓÚ Ê£ÓàÊ±¼ä ,Ôò°ÑÊ£ÓàÊ±¼ä ÉèÖÃÎª×·¼ÓÊ±¼ä ->¼ÌĞøÔËĞĞ
+                //å¦‚æœ è¿½åŠ æ—¶é—´ å¤§äº å‰©ä½™æ—¶é—´ ,åˆ™æŠŠå‰©ä½™æ—¶é—´ è®¾ç½®ä¸ºè¿½åŠ æ—¶é—´ ->ç»§ç»­è¿è¡Œ
                 var resTime = exitTime - timer;
                 if (addTime > resTime)
                 {

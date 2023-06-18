@@ -173,13 +173,14 @@ namespace Flux
 	 */
 	public class FEvent : FObject
 	{
+		//timeline持有者的transform
 		public override Transform Owner { get { return _track.Owner; } }
 
 		public override FSequence Sequence { get { return _track.Sequence; } }
 
         public bool EnableEvent = true;
 
-		//isLocalTrueOnly
+		//isLocalTrueOnly ？？？ TODO 用来做什么？？
 		public bool isLocalTrueOnly;
 
 		// track that owns this event

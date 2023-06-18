@@ -24,8 +24,6 @@ TODO
 	2 技能数据保存方式
 
 	3 技能事件执行
-	
-	4 里面的各种编辑器工具脚本熟悉
 }
 
 
@@ -88,9 +86,7 @@ Flux常用脚本调用流程和方法
 }
 
 
-FSwitchEvent ==>SwitchEvents 用于控制技能后摇, 和结束帧 
-
-XCMsgEvent==》用于发送消息，如重力开关
+FSwitchEvent
 
 
 自定义Track步骤
@@ -131,4 +127,25 @@ XCMsgEvent==》用于发送消息，如重力开关
 	4 修改Event的颜色，在Assets/Flux/Editor/FluxSettings.asset文件里配置
 	
 }
+]==]
+
+--[==[
+Flux编辑器窗口文件：FSequenceEditorWindow.cs
+{
+	FSequenceWindowHeader.cs   Sequence头部编辑区域脚本
+	{
+		FSequenceWindowHeader.cs 中的保存按钮 调用的是  SavaSequenceData.GetData();
+	}
+}
+
+
+]==]
+
+
+
+--[==[
+技能数据保存
+
+Assets/Scripts/Skill/ ===>自定义技能数据结构
+
 ]==]

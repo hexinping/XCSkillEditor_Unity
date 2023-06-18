@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Object = UnityEngine.Object;
-
+//自定义技能数据结构
 namespace XiaoCao
 {
     public static class XCSetting

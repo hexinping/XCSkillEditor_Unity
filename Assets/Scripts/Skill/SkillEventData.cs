@@ -14,7 +14,7 @@ public class SkillEventData : MonoBehaviour
 
     public float speed = 1f;
 
-    //ObjEvent 是生成物体,一般是子技能的载体
+    //ObjEvent 是生成物体,一般是子技能的载体  特效之类的事件
     [ShowIf(nameof(HasObjEvent), "no")]
     public XCObjEvent ObjEvent;
 

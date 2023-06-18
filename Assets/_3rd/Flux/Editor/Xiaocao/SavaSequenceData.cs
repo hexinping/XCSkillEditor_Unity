@@ -108,6 +108,7 @@ namespace FluxEditor
 
             Debug.Log($"yns Sava Seq {Sequence.name}");
             tmpSeqFAnimEvents.Clear();
+            //技能数据序列化存储
             SavaSequnce(Sequence, Sequence.SkillId);
             CheckAddAnim(Sequence);
         }
@@ -239,7 +240,7 @@ namespace FluxEditor
             }
 
             List<SkillEventData> skillObjs = skillEvents;
-
+            //拿到技能数据后，组装子技能数据
             int count = skillObjs.Count;
             skillObjs[0].subSkillData.Clear();
             for (int i = 1; i < count; i++)
@@ -292,18 +293,20 @@ namespace FluxEditor
             var trackType = _track.GetEventType();
             if (trackType == typeof(FPlayAnimationEvent))
             {
+                //动作事件
                 res.AnimEvents.Events.Clear();
                 foreach (var ev in _track.Events)
                 {
                     var fEvent = ev as FPlayAnimationEvent;
                     tmpSeqFAnimEvents.Add(fEvent);
-                    var xce = ToXCAnimEvent(fEvent);
+                    var xce = ToXCAnimEvent(fEvent); //把flux的animationevent转化成自定义数据结构
                     //xce.speed = res.speed;
                     res.AnimEvents.Events.Add(xce);
                 }
             }
             else if (trackType == typeof(FTweenPositionEvent))
             {
+                //位移事件
                 res.MoveEvents.Events.Clear();
                 FTweenPositionEvent lastEvent = null;
                 foreach (var ev in _track.Events)
@@ -322,6 +325,7 @@ namespace FluxEditor
             }
             else if (trackType == typeof(FTweenScaleEvent))
             {
+                //缩放事件
                 res.ScaleEvents.Events.Clear();
                 foreach (var ev in _track.Events)
                 {
@@ -333,6 +337,7 @@ namespace FluxEditor
             }           
             else if (trackType == typeof(FTweenRotationEvent))
             {
+                //旋转事件
                 res.RotateEvents.Events.Clear();
                 foreach (var ev in _track.Events)
                 {
@@ -344,6 +349,7 @@ namespace FluxEditor
             }
             else if (trackType == typeof(FPlayParticleEvent))
             {
+                //特效事件
                 if (_track.Events.Count == 1)
                 {
                     //ObjEvent 一个track默认只有一个
@@ -373,6 +379,7 @@ namespace FluxEditor
             }
             else if (trackType == typeof(FSwitchEvent))
             {
+                //TODO
                 foreach (var ev in _track.Events)
                 {
                     var fEvent = ev as FSwitchEvent;
