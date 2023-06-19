@@ -249,7 +249,7 @@ namespace XiaoCao
 
             //Local Play包括 Local Npc
             UpdateStates_Local();
-
+            //玩家移动
             playerMover.MoveUpdate();
 
             if (isTruePlayer)

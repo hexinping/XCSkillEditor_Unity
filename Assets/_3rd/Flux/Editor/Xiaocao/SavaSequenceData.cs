@@ -316,7 +316,7 @@ namespace FluxEditor
                     SetLineEventTween_Ex(xce, fEvent);
                     if (lastEvent != null)
                     {
-                        //位移事件之间的间隙
+                        //位移事件之间的间隙, 当前事件的开始位置和上一个事件的结束位置
                         xce.startDetal = xce.startVec - lastEvent.Tween.To;
                     }
                     res.MoveEvents.Events.Add(xce);

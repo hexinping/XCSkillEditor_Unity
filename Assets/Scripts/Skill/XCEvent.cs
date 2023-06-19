@@ -172,12 +172,19 @@ namespace XiaoCao
             //Debug.Log("yns OnTrigger 2");
         }
         public virtual void OnFinish() { }
+        
+        /// <param name="frame">当前帧</param>
+        /// <param name="timeSinceTrigger">当前帧-事件开始帧</param>
         public virtual void OnUpdateEvent(int frame, float timeSinceTrigger) { }
         public virtual void OnReset()
         {
             _hasFinished = false;
             _hasTriggered = false;
         }
+        
+       
+        /// <param name="frame">当前帧</param>
+        /// <param name="timeSinceTrigger">当前帧-事件开始帧</param>
         public void UpdateEvent(int frame, float timeSinceTrigger)
         {
             OnUpdateEvent(frame, timeSinceTrigger);
@@ -479,8 +486,8 @@ namespace XiaoCao
     //Vec线性变化事件 基类
     public class XCLineEvent : XCEvent
     {
-        public Vector3 startVec;
-        public Vector3 endVec;
+        public Vector3 startVec; //开始位置
+        public Vector3 endVec; //结束位置
         [NonSerialized]
         public float lastTime = 0;
 
@@ -499,7 +506,7 @@ namespace XiaoCao
         {
             base.OnUpdateEvent(frame, timeSinceTrigger);
             float t = timeSinceTrigger / LengthTime;
-
+            //位移
             var move = GetVec3Value(t) - GetVec3Value(lastTime);
             lastTime = t;
             ApplyDetalVec(move);
