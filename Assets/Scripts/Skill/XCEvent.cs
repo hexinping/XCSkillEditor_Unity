@@ -666,6 +666,7 @@ namespace XiaoCao
             base.OnTrigger(timeSinceTrigger);
             if (InputType == InputEventType.Exit)
             {
+                //结束技能逻辑
                 SelfRunner.BreakSkill();
             }
             else if (InputType == InputEventType.Finish)

@@ -665,7 +665,7 @@ namespace XiaoCao
                         CallPlaySkill(SkillStr.GetNorAckName(norAckIndex));
 
                         norAckIndex++;
-                        norAckTime = inputSetting.NorAckTime;
+                        norAckTime = inputSetting.NorAckTime; //Update里会自减
                         if (norAckIndex >= 3)
                         {
                             norAckIndex = 0;
