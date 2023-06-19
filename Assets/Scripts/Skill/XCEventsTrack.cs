@@ -63,7 +63,7 @@ namespace XiaoCao
             _currentTime += deltaTime;//Mathf.Clamp( time, 0, LengthTime );
             //帧数是用时间累加计算出来的
             //delta不是稳定的
-            //当前的1帧,指的的是动画帧,即1/30s,而不是update的一帧
+            //当前的1帧,指的的是动画帧,即1/30s,而不是update的一帧  逻辑帧率
             _currentFrame = Mathf.FloorToInt(_currentTime * XCSetting.FrameRate);
             //Debug.Log("yns  _curFrame " + _currentFrame + "_curTime "+ _currentTime + " curEvent" + _currentEvent);
 
@@ -81,10 +81,12 @@ namespace XiaoCao
                     {
                         if (!_events[i].HasTriggered)
                         {
+                            //技能事件触发，子类可以重载OnTrigger方法，只调用一次
                             _events[i].OnTrigger(_currentTime - _events[i].StartTime);
                         }
 
                         HasTrigger = true;
+                        //技能事件更新，里面也会判断技能结束
                         _events[i].UpdateEvent(_currentFrame, _currentTime - _events[i].StartTime);
 
                     }
@@ -94,6 +96,7 @@ namespace XiaoCao
                     //当 frame > end ,既已经完成 可以退出了
                     if (!_events[i].HasFinished && _events[i].HasTriggered)
                     {
+                        //技能事件结束触发，子类可以重载OnFinish方法，只调用一次
                         _events[i].OnFinish();
                     }
                     //对于 frame > end 的事件不再检测
@@ -101,7 +104,7 @@ namespace XiaoCao
                     if (i == limit - 1)
                     {
                         //Debug.Log("yns owner HasFinished " + _currentEvent);
-                        HasFinished = true;
+                        HasFinished = true;  //标记track已经播放完了，上层会删除
                     }
                     _currentEvent = Mathf.Clamp(i + 1, 0, limit - 1);
 

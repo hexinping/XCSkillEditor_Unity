@@ -184,6 +184,7 @@ namespace XiaoCao
 
             if (range.End <= frame)
             {
+                //技能结束
                 _hasFinished = true;
                 OnFinish();
             }
@@ -269,7 +270,7 @@ namespace XiaoCao
             {
                 return;
             }
-
+            //切换动作
             _animator.CrossFade(clipHash, blenderLength / Clip.length, 0, startOffset / Clip.length);
 
 
@@ -284,6 +285,7 @@ namespace XiaoCao
         {
             if (isBackToIdle)
             {
+                //切回idle状态
                 _animator.CrossFade(AnimHash.Idle, 0.05f);
             }
             base.OnFinish();

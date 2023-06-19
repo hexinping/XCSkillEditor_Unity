@@ -170,6 +170,44 @@ Assets/Scripts/Skill/ ===>自定义技能数据结构
 	Player控制相关代码 Assets/Scripts/Player
 	
 	Player的基类 Assets/Scripts/Skill/MonoAttacker.cs
+	
+	PlayerState.CheckInputSkill ==> 检测玩家输入，在Update里被调用
+	
+	PlayerState.RcpSKill 释放技能逻辑
+	{
+		ResFinder.GetSkillData ==》读取技能数据脚本
+		SkillLauncher.StartPlayerSkill ==》执行技能逻辑 ########
+	}
+	
+	PlayerMover
+	
+	SkillLauncher.StartPlayerSkill
+	
+	
+	先把一个简单的技能弄明白 NorAck_0
+	{
+		XCEventsRunner 技能事件执行者
+		{
+			updateTrack字段存储一堆逻辑轨迹对象XCEventsTrack，update里遍历
+			
+			XCEventsRunner.Update
+			{
+				OnUpdate
+				{
+					//遍历XCEventsTrack，从而遍历里面的events
+					updateTrack[i].OnEventUpdate(Time.deltaTime * speed);
+					{
+						//技能事件触发，子类可以重载OnTrigger方法，只调用一次
+						_events[i].OnTrigger(_currentTime - _events[i].StartTime);
+						
+						//技能事件更新，里面也会判断技能结束
+                        _events[i].UpdateEvent(_currentFrame, _currentTime - _events[i].StartTime);
+					}
+				}
+			}
+			
+		}
+	}
 }
 
 ]==]

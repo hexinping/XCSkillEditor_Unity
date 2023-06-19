@@ -127,7 +127,7 @@ namespace XiaoCao
             SkiillKeyCodeSo = SoUsing.SkiillKeyCodeSo;
 
             cc = GetComponent<CharacterController>();
-            playerMover = GetComponent<PlayerMover>();
+            playerMover = GetComponent<PlayerMover>(); //控制移动脚本
             playerMgr.Register(this);
             playerMover.Init(this);
         }
@@ -866,6 +866,7 @@ namespace XiaoCao
                 playerMover.curMoveSpeedAnim = 0;
             }
             Debug.Log("yns  " + netId + " RcpSKill " + skillId);
+            //加载技能数据
             var _skillPrefab = ResFinder.GetSkillData(skillId,agentType.IsEnemy()); //不可共用
 
 
@@ -874,6 +875,7 @@ namespace XiaoCao
                 Debug.LogError($"yns no Skill " + skillId);
                 return;
             }
+            //实例化一份技能数据
             SkillEventData _skill = Instantiate(_skillPrefab);
 
 
@@ -885,6 +887,8 @@ namespace XiaoCao
             //Debug.Log("yns   SkillOwenr.layer " + SkillOwenr.layer);
 
             lastSkillRuner = curSkillRuner;
+            //技能执行 真正的核心逻辑 ####
+            //SkillOwenr 技能持有逻辑对象
             curSkillRuner = SkillLauncher.StartPlayerSkill(_skill,SkillOwenr, castEuler, castPos);
             SetState(PlayerStateEnum.PlayerSkill); //无所谓 暂时都是skill吧
 
@@ -895,7 +899,7 @@ namespace XiaoCao
                 damageState = DamageState.NoBreak;
                 noDamageTimer.AddMinTime(skillConfig.noBreakTime, true);
             }
-
+            //技能结束
             curSkillRuner.onFinishEvent.AddListener(() =>
             {
                 SkillFinish(curSkillRuner);

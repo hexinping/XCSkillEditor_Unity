@@ -12,6 +12,7 @@ namespace XiaoCao
         //后面考虑改写附加条件
         public static XCEventsRunner StartPlayerSkill(SkillEventData skillData, SkillOwner owner, Vector3 castEuler, Vector3 castPos)
         {
+            //执行技能数据，把数据都存储到具体的eventtrack上然后runner驱动track更新
             XCEventsRunner runner = StartRuner(owner, skillData, castEuler, castPos);
             runner.isMainSkill = true;
             foreach (var subSkill in skillData.subSkillData)
@@ -47,7 +48,7 @@ namespace XiaoCao
                 AddTrackToRunner(runner, skillOwner, new List<XCEvent>() { skillData.ObjEvent });
                 skillOwner.isCustomObject = true;
             }
-
+            //把不同事件加入轨道管理，内部会构建XCEventsTrack对象，放入runner里管理
             AddTrackToRunner(runner, skillOwner, skillData.TriggerEvents.ToXCEventList());
 
             AddTrackToRunner(runner, skillOwner, skillData.AnimEvents.ToXCEventList());

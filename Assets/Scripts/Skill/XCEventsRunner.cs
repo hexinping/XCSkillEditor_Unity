@@ -63,6 +63,7 @@ namespace XiaoCao
  
             if (State == RunnerState.Update)
             {
+                //遍历XCEventsTrack，从而遍历里面的events， 这里是主技能
                 updateCount = updateTrack.Count;
                 bool isSelfEnd = updateCount == 0;
                 if (!isSelfEnd)
@@ -73,7 +74,7 @@ namespace XiaoCao
                 {
                     Finish();
                 }
-
+                //子技能状态
                 if (isSelfEnd && IsSubsEnd())
                 {
                     State = RunnerState.Stop;
@@ -95,6 +96,7 @@ namespace XiaoCao
             //ownerUpdate
             for (int i = updateCount - 1; i >= 0; i--)
             {
+                //遍历事件
                 updateTrack[i].OnEventUpdate(Time.deltaTime * speed);
 
                 if (isBreak && updateTrack[i].HasTrigger == false)
