@@ -107,7 +107,7 @@ namespace XiaoCao
             this.range = range;
         }
         public XCRange range;
-
+        //资源路径
         public string eName;
         //isLocal truePlyaer
         public bool isLocalTrueOnly = false;
@@ -314,7 +314,7 @@ namespace XiaoCao
         public Vector3 playerOffset;
 
         //初始状态
-        public Vector3 startPos = Vector3.zero;
+        public Vector3 startPos = Vector3.zero; //相对于玩家的初始方向
         public Vector3 startRotation = Vector3.zero; //其实是eulerAngles
         public Vector3 startScale = Vector3.one;
 
@@ -340,7 +340,7 @@ namespace XiaoCao
             base.OnTrigger(timeSinceTrigger);
         }
 
-        //设置起始位置
+        //设置起始位置，这一块逻辑我有点没看懂
         private void SetFirstPos()
         {
             if (transfromType == TransfromType.FollowPlayer || transfromType == TransfromType.PlyerUnFollow)
@@ -569,11 +569,12 @@ namespace XiaoCao
             {
                 collider.enabled = false;
                 triggerItem.gameObject.SetActive(true);
-
+                //设置层级mask
                 triggerItem.gameObject.layer = skillOwner.triggerLayer;
 
 
                 triggerItem.attacker = skillOwner.attacker;
+                //攻击信息存储
                 AckInfoObject ackInfoObject = triggerItem.ackInfoObject;
 
                 ackInfoObject.netId = this.skillOwner.netId;
@@ -602,7 +603,9 @@ namespace XiaoCao
                     collider = TriggerTF.gameObject.AddComponent<BoxCollider>();
                     triggerItem = TriggerTF.gameObject.AddComponent<TriggerItem>();
                     collider.isTrigger = true;
+                    //给触碰节点设置父节点，如果父节点移动的话就能直接跟随,父节点一般时玩家或者特效
                     triggerItem.transform.SetParent(skillOwner.eventOwnerTF, false);
+
                     return true;
                 }
                 return false;

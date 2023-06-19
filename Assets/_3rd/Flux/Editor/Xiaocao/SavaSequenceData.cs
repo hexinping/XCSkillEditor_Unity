@@ -482,7 +482,7 @@ namespace FluxEditor
         {
             xce.transfromType = fe.Track.Timeline.transfromType;
 
-            xce.startPos = fe.Owner.transform.position - playerTF.transform.position;
+            xce.startPos = fe.Owner.transform.position - playerTF.transform.position; //相对于玩家的初始方向
             xce.startRotation = fe.Owner.transform.localEulerAngles;
             xce.startScale = fe.Owner.transform.localScale;
             if (fe.Owner.transform.parent == playerTF)

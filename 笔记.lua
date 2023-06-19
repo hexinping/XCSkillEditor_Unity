@@ -210,4 +210,34 @@ Assets/Scripts/Skill/ ===>自定义技能数据结构
 	}
 }
 
+
+
+XCSwitchEvent ==> 开关事件,
+
+XCMoveEvent ==》位移事件，父类XCLineEvent，在父类的OnUpdateEvent会计算每一帧的偏移量，然后传给cc组件
+
+
+怎样触发伤害判断的
+{
+	XCTriggerEvent
+	{
+		Init时会新建一个Trigger的空GameObject，然后挂上TriggerItem脚本以及boxCollider组件(勾上trigger标签)
+		OnTrigger时会更新的trigger的属性
+	}
+}
+
+特效事件序列化成XCObjEvent
+{
+	XCObjEvent.SetFirstPos ==> 设置特效的初始位置，我有点没看懂
+}
+
+F1技能可以好好看看，远距离伤害 TODO
+
+SkillOwner
+{
+	//公共引用 多个技能公用一个
+    //Owner是技能的主体/父节点 动画是player,技能是特效 
+}
+
+
 ]==]

@@ -27,17 +27,17 @@ namespace XiaoCao
 
     }
 
-    //ÒıÓÃÀà ¼õÉÙÄÚ´æ·ÖÅä
+    //å¼•ç”¨ç±» å‡å°‘å†…å­˜åˆ†é…
     public class AckInfoObject
     {
         public uint netId;
-        public float ackValue; //ÉËº¦ÊıÖµ
-        public string baseSkillId; //Ö÷¼¼ÄÜId
-        public string ackId; //×Ó¹¥»÷¶Îid ÓÃÓÚÉËº¦ÊıÖµ
+        public float ackValue; //ä¼¤å®³æ•°å€¼
+        public string baseSkillId; //ä¸»æŠ€èƒ½Id
+        public string ackId; //å­æ”»å‡»æ®µid ç”¨äºä¼¤å®³æ•°å€¼
 
-        public Vector3 skillPos;  //¼¼ÄÜ×ø±ê
-        public Vector3 skillDir;  //¼¼ÄÜ³¯Ïò
-        public float angleY; //¼¼ÄÜÕı·½Ïò  0±íÊ¾ÍÆ,180Ïàµ±ÓÚÎü¸½
+        public Vector3 skillPos;  //æŠ€èƒ½åæ ‡
+        public Vector3 skillDir;  //æŠ€èƒ½æœå‘
+        public float angleY; //æŠ€èƒ½æ­£æ–¹å‘  0è¡¨ç¤ºæ¨,180ç›¸å½“äºå¸é™„
 
         public AckInfo ToAckInfo() 
         { 

@@ -43,7 +43,7 @@ namespace XiaoCao
 
             if (skillData.HasObjEvent)
             {
-                skillOwner = SkillOwner.CopyNew(skillOwner);
+                skillOwner = SkillOwner.CopyNew(skillOwner);//子技能有自己的skillowner
                 runner.objEvent = skillData.ObjEvent;
                 AddTrackToRunner(runner, skillOwner, new List<XCEvent>() { skillData.ObjEvent });
                 skillOwner.isCustomObject = true;
