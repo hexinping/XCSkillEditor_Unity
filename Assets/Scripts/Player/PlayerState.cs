@@ -204,8 +204,8 @@ namespace XiaoCao
 
         private void SetLockMouse()
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = true;
+            // Cursor.lockState = CursorLockMode.Locked;
+            // Cursor.visible = true;
         }
 
         #region initSetting

@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 
 public struct BreakPower
 {
-    public int noBreakPower;//°ÔÌå
+    public int noBreakPower;//éœ¸ä½“
     public int maxBreakPower;
 
     internal void SetFull()
@@ -88,7 +88,7 @@ public static class IOHelper
 
     {
 
-        //ÎÄ¼ş¼Ğ´æÔÚÔò·µ»Ø
+        //æ–‡ä»¶å¤¹å­˜åœ¨åˆ™è¿”å›
 
         if (IsDirectoryExists(fileName))
 
@@ -100,10 +100,10 @@ public static class IOHelper
 
     public static void SetData(string fileName, object pObject)
     {
-        //½«¶ÔÏóĞòÁĞ»¯Îª×Ö·û´®
+        //å°†å¯¹è±¡åºåˆ—åŒ–ä¸ºå­—ç¬¦ä¸²
         string toSave = JsonUtility.ToJson(pObject);
 
-        //¶Ô×Ö·û´®½øĞĞ¼ÓÃÜ,32Î»¼ÓÃÜÃÜÔ¿
+        //å¯¹å­—ç¬¦ä¸²è¿›è¡ŒåŠ å¯†,32ä½åŠ å¯†å¯†é’¥
 
         //toSave = RijndaelEncrypt(toSave, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 
@@ -123,7 +123,7 @@ public static class IOHelper
 
         StreamReader streamReader = File.OpenText(fileName);
         string data = streamReader.ReadToEnd();
-        //¶ÔÊı¾İ½øĞĞ½âÃÜ£¬32Î»½âÃÜÃÜÔ¿
+        //å¯¹æ•°æ®è¿›è¡Œè§£å¯†ï¼Œ32ä½è§£å¯†å¯†é’¥
         //data = RijndaelDecrypt(data, "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         streamReader.Close();
 
@@ -131,19 +131,19 @@ public static class IOHelper
     }
 
 
-    #region ÆúÓÃ
+    #region å¼ƒç”¨
     private static string RijndaelEncrypt(string pString, string pKey)
     {
 
-        //ÃÜÔ¿
+        //å¯†é’¥
 
         byte[] keyArray = UTF8Encoding.UTF8.GetBytes(pKey);
 
-        //´ı¼ÓÃÜÃ÷ÎÄÊı×é
+        //å¾…åŠ å¯†æ˜æ–‡æ•°ç»„
 
         byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(pString);
 
-        //Rijndael½âÃÜËã·¨
+        //Rijndaelè§£å¯†ç®—æ³•
 
         RijndaelManaged rDel = new RijndaelManaged();
 
@@ -155,7 +155,7 @@ public static class IOHelper
 
         ICryptoTransform cTransform = rDel.CreateEncryptor();
 
-        //·µ»Ø¼ÓÃÜºóµÄÃÜÎÄ
+        //è¿”å›åŠ å¯†åçš„å¯†æ–‡
 
         byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
 
@@ -167,15 +167,15 @@ public static class IOHelper
 
     {
 
-        //½âÃÜÃÜÔ¿
+        //è§£å¯†å¯†é’¥
 
         byte[] keyArray = UTF8Encoding.UTF8.GetBytes(pKey);
 
-        //´ı½âÃÜÃÜÎÄÊı×é
+        //å¾…è§£å¯†å¯†æ–‡æ•°ç»„
 
         byte[] toEncryptArray = Convert.FromBase64String(pString);
 
-        //Rijndael½âÃÜËã·¨
+        //Rijndaelè§£å¯†ç®—æ³•
 
         RijndaelManaged rDel = new RijndaelManaged();
 
@@ -187,7 +187,7 @@ public static class IOHelper
 
         ICryptoTransform cTransform = rDel.CreateDecryptor();
 
-        //·µ»Ø½âÃÜºóµÄÃ÷ÎÄ
+        //è¿”å›è§£å¯†åçš„æ˜æ–‡
 
         byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
 

@@ -149,3 +149,27 @@ Flux编辑器窗口文件：FSequenceEditorWindow.cs
 Assets/Scripts/Skill/ ===>自定义技能数据结构
 
 ]==]
+
+
+
+--[==[
+技能运行 ########
+
+流程
+
+技能判定时机
+
+碰撞生效范围
+
+
+
+
+
+相关控制代码
+{
+	Player控制相关代码 Assets/Scripts/Player
+	
+	Player的基类 Assets/Scripts/Skill/MonoAttacker.cs
+}
+
+]==]

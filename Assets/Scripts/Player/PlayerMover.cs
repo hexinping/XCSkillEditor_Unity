@@ -572,11 +572,11 @@ public class PlayerMover : MonoBehaviour
         {
             if (Cursor.lockState == CursorLockMode.None)
             {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                // Cursor.lockState = CursorLockMode.Locked;
+                // Cursor.visible = false;
             }
             else
-            {
+            {    
                 SetShowCursor();
                 //Cursor.lockState = CursorLockMode.None;
             }

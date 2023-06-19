@@ -74,7 +74,8 @@ namespace XiaoCao
         public AgentTag AgentTag;
         [SyncVar()]
         public DamageState damageState;
-
+        
+        //一堆逻辑定时器
         public XCTimer breakTimer = new XCTimer();
         public XCTimer noDamageTimer = new XCTimer();
         public XCTimer dieTimer = new XCTimer();

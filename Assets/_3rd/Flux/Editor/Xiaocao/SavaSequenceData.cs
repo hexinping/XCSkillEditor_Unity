@@ -379,7 +379,7 @@ namespace FluxEditor
             }
             else if (trackType == typeof(FSwitchEvent))
             {
-                //TODO
+                //这个事件具体不知道用来做什么 TODO
                 foreach (var ev in _track.Events)
                 {
                     var fEvent = ev as FSwitchEvent;
@@ -389,6 +389,7 @@ namespace FluxEditor
             }
             else if (trackType == typeof(FPlayMsgEvent))
             {
+                //消息事件
                 foreach (var ev in _track.Events)
                 {
                     var fEvent = ev as FPlayMsgEvent;
@@ -398,6 +399,7 @@ namespace FluxEditor
             }
             else if (trackType == typeof(FTriggerRangeEvent))
             {
+                //碰撞盒范围事件
                 res.TriggerEvents.Events.Clear();
                 foreach (var ev in _track.Events)
                 {
