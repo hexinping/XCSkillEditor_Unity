@@ -231,7 +231,7 @@ XCMoveEvent ==》位移事件，父类XCLineEvent，在父类的OnUpdateEvent会
 	XCObjEvent.SetFirstPos ==> 设置特效的初始位置，我有点没看懂
 }
 
-F1技能可以好好看看，远距离伤害 TODO
+F1技能可以好好看看，远距离伤害 ==> 其实就是添加了碰撞体然后随着父物体移动
 
 SkillOwner
 {
