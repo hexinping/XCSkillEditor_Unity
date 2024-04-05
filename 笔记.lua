@@ -148,6 +148,13 @@ Flux编辑器窗口文件：FSequenceEditorWindow.cs
 
 Assets/Scripts/Skill/ ===>自定义技能数据结构
 
+其实就是从FLux上的数据 转成自己需要的数据
+{
+	FPlayAnimationEvent-->XCAnimEvent
+	FTweenPositionEvent-->XCMoveEvent
+	FTweenScaleEvent-->XCScaleEvent
+}
+
 ]==]
 
 
