@@ -2146,7 +2146,7 @@ Transform:
   m_GameObject: {fileID: 304818933}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.4793401, z: -0, w: 0.8776292}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8857,9 +8857,9 @@ MonoBehaviour:
   _actionOnStart: 0
   _loop: 0
   _defaultSpeed: 1
-  _speed: 1.25
+  _speed: 1
   _updateMode: 0
-  _length: 120
+  _length: 23
   _skillId: NorAck_0
   _fSeqSetting: {fileID: 11400000, guid: 67977b4b1a5cdeb4b8787de4a26733ae, type: 2}
   _onFinishedCallback:
