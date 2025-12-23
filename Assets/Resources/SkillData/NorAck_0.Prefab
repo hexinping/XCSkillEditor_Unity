@@ -24,12 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473415769950764451}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6823796939248676852}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8687925490960875040
 MonoBehaviour:
@@ -45,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillId: NorAck_0
   skillName: NorAck_0_1
-  speed: 1.25
+  speed: 1
   ObjEvent:
     range:
       _start: 4
@@ -108,13 +109,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7686765872797588559}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2770947072715463390}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &754174281397594342
 MonoBehaviour:
@@ -130,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillId: NorAck_0
   skillName: NorAck_0
-  speed: 1.25
+  speed: 1
   ObjEvent:
     range:
       _start: 0
