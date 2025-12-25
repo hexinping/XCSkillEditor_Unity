@@ -135,7 +135,7 @@ namespace Flux
 		/// @brief Removes timeline with id.
 		/// @oaram id Id of the CTimeline to remove.
 		/// @note After calling this function, the ids of the timelines after this
-		/// one in the list will have an id smaller by 1.
+		/// one in the list will have an id smaller by 1. --> ID都自动减一
 		/// @warning Does not check if id is valid (i.e. between -1 & GetTimelines().Count)
 		public void Remove( int id )
 		{
