@@ -53,7 +53,8 @@ namespace Flux
 //		/// There can only be one of these, and they aren't processed at runtime! It
 //		/// is used for things like the comment track.
 //		public bool IsGlobal { get { return _isGlobal; } set { _isGlobal = true; } }
-
+		
+		//_container的Sequence
 		public override FSequence Sequence { get { return _container.Sequence; } }
 
 		public override Transform Owner { get { return _owner; }}

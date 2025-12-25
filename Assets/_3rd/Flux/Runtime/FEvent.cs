@@ -176,13 +176,14 @@ namespace Flux
 		//timeline持有者的transform
 		public override Transform Owner { get { return _track.Owner; } }
 
+		//_container的Sequence
 		public override FSequence Sequence { get { return _track.Sequence; } }
 
         public bool EnableEvent = true;
 
 		//isLocalTrueOnly ？？？ TODO 用来做什么？？
 		public bool isLocalTrueOnly;
-
+		
 		// track that owns this event
 		[SerializeField]
 		protected FTrack _track = null;
@@ -397,7 +398,7 @@ namespace Flux
 	
 		/**
 		 * @brief Called each time the sequence gets updated, if the current frame is in this event's range.
-		 * @param framesSinceTrigger How many frames have passed since TriggerFrame
+		 * @param framesSinceTrigger How many frames have passed since TriggerFrame --》 framesSinceTrigger 自 TriggerFrame 以来过去了多少帧
 		 * @param timeSinceTrigger How much time passed since TriggerFrame
 		 */
         public void UpdateEvent( int framesSinceTrigger, float timeSinceTrigger )
@@ -415,6 +416,7 @@ namespace Flux
 
 			if( framesSinceTrigger == Length ) 
 			{
+				//已经过了当前Event的帧范围 FTrack.UpdateEvents调用过来
 				Finish();
 			}
 

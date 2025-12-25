@@ -64,7 +64,7 @@ namespace FluxEditor
         {
         }
 
-        //ÉèÖÃµ±Ç°Öµ
+        //ï¿½ï¿½ï¿½Ãµï¿½Ç°Öµ
         public Vector3 GetPropertyValue()
         {
             FTweenPositionEvent positionEvent = target as FTweenPositionEvent;
@@ -128,7 +128,7 @@ namespace FluxEditor
             }
 
             tweenRect.x = tweenRect.xMax - 180;
-            if (GUI.Button(tweenRect, "¶ÔÆëÇ°", EditorStyles.miniButton))
+            if (GUI.Button(tweenRect, "ï¿½ï¿½ï¿½ï¿½Ç°", EditorStyles.miniButton))
             {
                 var track = Self.Track;
                 int length = track.Events.Count;
@@ -144,7 +144,7 @@ namespace FluxEditor
                 }
             }
             tweenRect.x = tweenRect.xMax - 180;
-            if (GUI.Button(tweenRect, "¶ÔÆëºó", EditorStyles.miniButton))
+            if (GUI.Button(tweenRect, "ï¿½ï¿½ï¿½ï¿½ï¿½", EditorStyles.miniButton))
             {
                 var track = Self.Track;
                 int length = track.Events.Count;
@@ -243,7 +243,7 @@ namespace FluxEditor
             {
                 handle = Handles.CubeHandleCap;
             }
-            Handles.FreeMoveHandle(pos, rotation, HandleUtility.GetHandleSize(pos) * 0.15f, Vector3.one, handle);
+            var fmh_246_41_639022819125249554 = rotation; Handles.FreeMoveHandle(pos, HandleUtility.GetHandleSize(pos) * 0.15f, Vector3.one, handle);
 
 
             Vector3 newPointPosition = Handles.DoPositionHandle(pos, rotation);

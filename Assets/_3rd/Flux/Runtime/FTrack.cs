@@ -115,7 +115,7 @@ namespace Flux
 				transform.parent = null;
 			}
 		}
-
+		//_container的Sequence
 		public override FSequence Sequence { get { return _timeline.Sequence; } }
 				public override Transform Owner { get { return _timeline.Owner; } }
 
@@ -416,7 +416,7 @@ namespace Flux
 				if( frame < _events[i].Start )
 				{
 					if( _events[i].HasTriggered )
-						_events[i].Stop();
+						_events[i].Stop(); //已经触发过了，当前帧小于该事件的起始帧就调用Stop
 
 					if( Sequence.IsPlayingForward )
 						break;
@@ -427,13 +427,17 @@ namespace Flux
 				{
 					if( _events[i].HasFinished && Sequence.FrameChanged )
 						_events[i].Stop();
-					if( !_events[i].HasFinished )
+					if (!_events[i].HasFinished)
+					{
+						//当该Event执行完会调用Event的Finish方法
 						_events[i].UpdateEvent( frame - _events[i].Start, time-_events[i].StartTime );
+					}
 				}
 				else //if( frame > _events[_currentEvent].End ) // is it finished
 				{
 					if( !_events[i].HasFinished && (_events[i].HasTriggered || _events[i].TriggerOnSkip) )
 					{
+						//当该Event执行完会调用Event的Finish方法
 						_events[i].UpdateEvent( _events[i].Length, _events[i].LengthTime );
 					}
 
